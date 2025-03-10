@@ -2,14 +2,43 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import SEO from '../components/common/SEO';
 import Layout from '../components/layout/Layout';
-import Section from '../components/common/Section';
 import styled from 'styled-components';
-import Button from '../components/common/Button';
+import { getBlogPosts } from '../services/blogService';
+
+const BlogContainer = styled.div`
+  background: linear-gradient(120deg, #1a1a2e 0%, #16213e 100%);
+  padding: 6rem 0;
+  min-height: 100vh;
+`;
+
+const ContentWrapper = styled.div`
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+`;
+
+const PageTitle = styled.h1`
+  font-size: 3rem;
+  font-weight: 800;
+  text-align: center;
+  margin-bottom: 1rem;
+  background: linear-gradient(135deg, #00ff87 0%, #60efff 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+`;
+
+const PageSubtitle = styled.p`
+  font-size: 1.2rem;
+  text-align: center;
+  color: rgba(255, 255, 255, 0.7);
+  max-width: 700px;
+  margin: 0 auto 4rem auto;
+`;
 
 const BlogGrid = styled.div`
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 2rem;
+  gap: 2.5rem;
   
   @media (max-width: 992px) {
     grid-template-columns: repeat(2, 1fr);
@@ -17,146 +46,103 @@ const BlogGrid = styled.div`
   
   @media (max-width: 768px) {
     grid-template-columns: 1fr;
+    max-width: 400px;
+    margin: 0 auto;
   }
 `;
 
-const BlogCard = styled.div`
-  background-color: var(--background-light);
-  border-radius: var(--border-radius);
+const BlogCard = styled(Link)`
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 20px;
   overflow: hidden;
-  box-shadow: var(--box-shadow);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
+  text-decoration: none;
   
   &:hover {
     transform: translateY(-5px);
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 0 50px rgba(96, 239, 255, 0.1);
   }
 `;
 
 const BlogImage = styled.div`
   height: 200px;
   overflow: hidden;
+  position: relative;
   
   img {
     width: 100%;
     height: 100%;
     object-fit: cover;
     transition: transform 0.3s ease;
-    
-    ${BlogCard}:hover & {
-      transform: scale(1.05);
-    }
+  }
+  
+  ${BlogCard}:hover & img {
+    transform: scale(1.05);
   }
 `;
 
 const BlogContent = styled.div`
-  padding: 1.5rem;
+  padding: 2rem;
 `;
 
 const BlogDate = styled.div`
   font-size: 0.875rem;
-  color: var(--text-secondary);
+  color: rgba(255, 255, 255, 0.6);
   margin-bottom: 0.5rem;
 `;
 
 const BlogTitle = styled.h3`
-  font-size: 1.25rem;
+  font-size: 1.5rem;
+  font-weight: 700;
   margin-bottom: 1rem;
-  color: var(--text-color);
+  background: linear-gradient(135deg, #00ff87 0%, #60efff 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 `;
 
 const BlogExcerpt = styled.p`
-  color: var(--text-secondary);
+  color: rgba(255, 255, 255, 0.7);
   margin-bottom: 1.5rem;
   line-height: 1.6;
 `;
 
 const BlogPage: React.FC = () => {
-  // Sample blog posts data
-  const blogPosts = [
-    {
-      id: 1,
-      title: 'Understanding USDT Flashing: A Beginner\'s Guide',
-      date: 'March 5, 2025',
-      excerpt: 'Learn the basics of USDT flashing, how it works, and why it\'s becoming increasingly popular in the cryptocurrency world.',
-      image: 'https://via.placeholder.com/600x400',
-    },
-    {
-      id: 2,
-      title: 'Top 5 Security Practices for USDT Flashing',
-      date: 'February 28, 2025',
-      excerpt: 'Discover the essential security measures you should implement to protect your assets when using USDT flashing software.',
-      image: 'https://via.placeholder.com/600x400',
-    },
-    {
-      id: 3,
-      title: 'How to Maximize Your Returns with USDT Flashing',
-      date: 'February 20, 2025',
-      excerpt: 'Explore advanced strategies and techniques to optimize your USDT flashing operations and increase your profits.',
-      image: 'https://via.placeholder.com/600x400',
-    },
-    {
-      id: 4,
-      title: 'The Evolution of USDT Flashing Technology',
-      date: 'February 15, 2025',
-      excerpt: 'Take a journey through the history and development of USDT flashing technology, from its early days to current innovations.',
-      image: 'https://via.placeholder.com/600x400',
-    },
-    {
-      id: 5,
-      title: 'USDT Flashing vs. Traditional Crypto Trading: Pros and Cons',
-      date: 'February 10, 2025',
-      excerpt: 'Compare the advantages and disadvantages of USDT flashing against conventional cryptocurrency trading methods.',
-      image: 'https://via.placeholder.com/600x400',
-    },
-    {
-      id: 6,
-      title: 'Common Mistakes to Avoid in USDT Flashing',
-      date: 'February 5, 2025',
-      excerpt: 'Learn about the typical errors beginners make when starting with USDT flashing and how to avoid them for better results.',
-      image: 'https://via.placeholder.com/600x400',
-    },
-  ];
+  const blogPosts = getBlogPosts();
 
   return (
     <Layout>
       <SEO
         title="Blog | USDT FLASHER PRO"
-        description="Stay updated with the latest news, tips, and insights about USDT flashing and cryptocurrency trends."
-        keywords="USDT flasher blog, cryptocurrency blog, blockchain news, USDT flashing tips, crypto guides"
+        description="Stay updated with the latest insights about USDT flashing, cryptocurrency trends, and blockchain technology."
+        keywords="USDT flasher blog, cryptocurrency blog, blockchain news, USDT flashing guide, crypto security, digital assets"
       />
       
-      <Section
-        title="USDT FLASHER PRO Blog"
-        subtitle="Stay updated with the latest news, tips, and insights about USDT flashing and cryptocurrency trends."
-        background="light"
-        padding="large"
-      >
-        <BlogGrid>
-          {blogPosts.map((post) => (
-            <BlogCard key={post.id}>
-              <BlogImage>
-                <img src={post.image} alt={post.title} />
-              </BlogImage>
-              
-              <BlogContent>
-                <BlogDate>{post.date}</BlogDate>
-                <BlogTitle>{post.title}</BlogTitle>
-                <BlogExcerpt>{post.excerpt}</BlogExcerpt>
-                <Button variant="outline" size="small">
-                  Read More
-                </Button>
-              </BlogContent>
-            </BlogCard>
-          ))}
-        </BlogGrid>
-        
-        <div style={{ textAlign: 'center', marginTop: '3rem' }}>
-          <Button variant="primary" size="large">
-            Load More Articles
-          </Button>
-        </div>
-      </Section>
+      <BlogContainer>
+        <ContentWrapper>
+          <PageTitle>Latest Insights</PageTitle>
+          <PageSubtitle>
+            Explore our latest articles about USDT flashing, cryptocurrency, and blockchain technology.
+          </PageSubtitle>
+          
+          <BlogGrid>
+            {blogPosts.map((post) => (
+              <BlogCard key={post.id} to={`/blog/${post.slug}`}>
+                <BlogImage>
+                  <img src={post.image} alt={post.title} />
+                </BlogImage>
+                
+                <BlogContent>
+                  <BlogDate>{post.date}</BlogDate>
+                  <BlogTitle>{post.title}</BlogTitle>
+                  <BlogExcerpt>{post.excerpt}</BlogExcerpt>
+                </BlogContent>
+              </BlogCard>
+            ))}
+          </BlogGrid>
+        </ContentWrapper>
+      </BlogContainer>
     </Layout>
   );
 };

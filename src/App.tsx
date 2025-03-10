@@ -4,6 +4,7 @@ import GlobalStyles from './styles/GlobalStyles';
 import HomePage from './pages/HomePage';
 import AboutPage from './pages/AboutPage';
 import BlogPage from './pages/BlogPage';
+import BlogPost from './pages/blog/BlogPost';
 import DocumentationPage from './pages/DocumentationPage';
 import TutorialsPage from './pages/TutorialsPage';
 import TermsPage from './pages/TermsPage';
@@ -25,6 +26,7 @@ const App: React.FC = () => {
         <Route path="/" element={<HomePage />} />
         <Route path="/about" element={<AboutPage />} />
         <Route path="/blog" element={<BlogPage />} />
+        <Route path="/blog/:slug" element={<BlogPost />} />
         <Route path="/documentation" element={<DocumentationPage />} />
         <Route path="/tutorials" element={<TutorialsPage />} />
         <Route path="/terms" element={<TermsPage />} />
