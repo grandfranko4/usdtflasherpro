@@ -242,6 +242,7 @@ const ContactPage: React.FC = () => {
         subtitle="Have questions or need assistance? We're here to help. Fill out the form below, and our team will get back to you as soon as possible."
         background="light"
         padding="large"
+        isMainTitle={true}
       >
         <ContactContainer>
           <ContactInfo>

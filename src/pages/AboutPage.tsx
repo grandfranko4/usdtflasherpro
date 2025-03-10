@@ -102,6 +102,7 @@ const AboutPage: React.FC = () => {
         subtitle="Learn about our mission, vision, and the team behind the most reliable USDT flashing software."
         background="light"
         padding="large"
+        isMainTitle={true}
       >
         <AboutContainer>
           <AboutImage>

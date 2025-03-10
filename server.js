@@ -2,6 +2,8 @@ const express = require('express');
 const cors = require('cors');
 const nodemailer = require('nodemailer');
 const bodyParser = require('body-parser');
+const compression = require('compression');
+const path = require('path');
 
 const app = express();
 const PORT = process.env.PORT || 3001;
@@ -9,6 +11,7 @@ const PORT = process.env.PORT || 3001;
 // Middleware
 app.use(cors());
 app.use(bodyParser.json());
+app.use(compression()); // Add compression middleware
 
 // Create a transporter for sending emails
 const createTransporter = (email, password) => {
@@ -99,7 +102,16 @@ app.post('/api/notify-payment', async (req, res) => {
   }
 });
 
+// Serve static files from the React app build directory
+app.use(express.static(path.join(__dirname, 'build')));
+
+// The "catchall" handler: for any request that doesn't match one above, send back React's index.html file.
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, 'build', 'index.html'));
+});
+
 // Start the server
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
+  console.log(`Compression enabled for better performance`);
 });

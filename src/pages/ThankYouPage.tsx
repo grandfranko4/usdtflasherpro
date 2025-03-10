@@ -93,8 +93,11 @@ const ThankYouPage: React.FC = () => {
       />
       
       <Section
+        title="Thank You for Your Purchase"
+        subtitle="Your order has been received and is being processed. We appreciate your business and trust in USDT FLASHER PRO."
         background="light"
         padding="large"
+        isMainTitle={true}
       >
         <ThankYouContainer>
           <SuccessIcon>

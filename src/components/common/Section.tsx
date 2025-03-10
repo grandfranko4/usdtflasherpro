@@ -9,6 +9,7 @@ interface SectionProps {
   background?: 'dark' | 'light' | 'gradient';
   centered?: boolean;
   padding?: 'small' | 'medium' | 'large';
+  isMainTitle?: boolean;
 }
 
 const SectionContainer = styled.section<{
@@ -49,7 +50,17 @@ const SectionContent = styled.div<{ centered: boolean }>`
   text-align: ${({ centered }) => (centered ? 'center' : 'left')};
 `;
 
-const SectionTitle = styled.h2`
+const SectionTitleH1 = styled.h1`
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  color: var(--primary-color);
+  
+  @media (max-width: 768px) {
+    font-size: 2rem;
+  }
+`;
+
+const SectionTitleH2 = styled.h2`
   font-size: 2.5rem;
   margin-bottom: 1rem;
   color: var(--primary-color);
@@ -81,11 +92,13 @@ const Section: React.FC<SectionProps> = ({
   background = 'dark',
   centered = false,
   padding = 'medium',
+  isMainTitle = false,
 }) => {
   return (
     <SectionContainer id={id} background={background} padding={padding}>
       <SectionContent centered={centered}>
-        {title && <SectionTitle>{title}</SectionTitle>}
+        {title && isMainTitle && <SectionTitleH1>{title}</SectionTitleH1>}
+        {title && !isMainTitle && <SectionTitleH2>{title}</SectionTitleH2>}
         {subtitle && <SectionSubtitle>{subtitle}</SectionSubtitle>}
         {children}
       </SectionContent>

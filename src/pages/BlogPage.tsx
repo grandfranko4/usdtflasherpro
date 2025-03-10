@@ -131,6 +131,7 @@ const BlogPage: React.FC = () => {
         subtitle="Stay updated with the latest news, tips, and insights about USDT flashing and cryptocurrency trends."
         background="light"
         padding="large"
+        isMainTitle={true}
       >
         <BlogGrid>
           {blogPosts.map((post) => (
@@ -151,10 +152,28 @@ const BlogPage: React.FC = () => {
           ))}
         </BlogGrid>
         
-        <div style={{ textAlign: 'center', marginTop: '3rem' }}>
+        <div style={{ textAlign: 'center', marginTop: '3rem', marginBottom: '3rem' }}>
           <Button variant="primary" size="large">
             Load More Articles
           </Button>
+        </div>
+        
+        <div style={{ maxWidth: '800px', margin: '0 auto', padding: '2rem', backgroundColor: 'var(--background-light)', borderRadius: 'var(--border-radius)', boxShadow: 'var(--box-shadow)' }}>
+          <h2 style={{ marginBottom: '1.5rem', color: 'var(--text-color)' }}>About Our Blog</h2>
+          <p style={{ marginBottom: '1.5rem', lineHeight: '1.7', color: 'var(--text-color)' }}>
+            Welcome to the USDT FLASHER PRO blog, your go-to resource for everything related to USDT flashing, cryptocurrency trends, and blockchain technology. Our team of experts regularly publishes in-depth articles, guides, and analysis to help you stay informed and make better decisions in the crypto space.
+          </p>
+          <p style={{ marginBottom: '1.5rem', lineHeight: '1.7', color: 'var(--text-color)' }}>
+            Whether you're a beginner looking to understand the basics of USDT flashing or an experienced user seeking advanced strategies, our blog offers valuable insights for everyone. We cover a wide range of topics including security best practices, market analysis, technical tutorials, and the latest developments in cryptocurrency.
+          </p>
+          <p style={{ marginBottom: '1.5rem', lineHeight: '1.7', color: 'var(--text-color)' }}>
+            Subscribe to our newsletter to receive the latest articles directly in your inbox and never miss an important update. If you have suggestions for topics you'd like us to cover or questions about any of our articles, feel free to reach out to our editorial team at <a href="mailto:blog@usdtflasherpro.com" style={{ color: 'var(--primary-color)' }}>blog@usdtflasherpro.com</a>.
+          </p>
+          <div style={{ display: 'flex', justifyContent: 'center', marginTop: '1.5rem' }}>
+            <Button variant="outline">
+              Subscribe to Newsletter
+            </Button>
+          </div>
         </div>
       </Section>
     </Layout>
