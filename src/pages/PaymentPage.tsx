@@ -319,7 +319,9 @@ const PaymentPage: React.FC = () => {
   // Get product details from location state or use default values
   const productDetails = location.state?.product || {
     name: 'USDT FLASHER PRO License',
-    price: 299,
+    price1: 15,
+    price2: 15,
+    price3: 15,
   };
   
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -533,9 +535,7 @@ const PaymentPage: React.FC = () => {
                 </div>
                 
                 <div className="amount-container">
-                  Amount to send: {paymentMethod === 'bitcoin' 
-                    ? `0.01 BTC (approx. $${productDetails.price})` 
-                    : `${productDetails.price} USDT`}
+                  Please Make Exact Payment
                 </div>
                 
                 <div className="instructions">
