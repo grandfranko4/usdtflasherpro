@@ -1,46 +1,103 @@
-# Getting Started with Create React App
+# USDT FLASHER PRO Website
+
+This is the official website for USDT FLASHER PRO, a cryptocurrency flashing tool.
+
+## Features
+
+- Responsive design for all devices
+- Detailed product information
+- Secure payment processing
+- Contact form with email notifications
+- WhatsApp integration for customer support
+
+## Local Development
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+### Available Scripts
 
 In the project directory, you can run:
 
-### `npm start`
+- `npm start`: Runs the app in development mode at [http://localhost:3000](http://localhost:3000)
+- `npm run build`: Builds the app for production to the `build` folder
+- `npm run server`: Runs the local server for email notifications (development only)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Deployment to Netlify via GitHub
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+### Step 1: Push your code to GitHub
 
-### `npm test`
+1. Initialize Git in your project (if not already done):
+   ```bash
+   cd usdt-flasher-pro
+   git init
+   ```
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+2. Add all files to Git:
+   ```bash
+   git add .
+   ```
 
-### `npm run build`
+3. Commit the changes:
+   ```bash
+   git commit -m "Initial commit"
+   ```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+4. Add the remote repository:
+   ```bash
+   git remote add origin https://github.com/grandfranko4/usdtflasherpro.git
+   ```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+5. Push to GitHub:
+   ```bash
+   git push -u origin main
+   ```
+   (If your default branch is 'master' instead of 'main', use `git push -u origin master`)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### Step 2: Connect to Netlify
 
-### `npm run eject`
+1. Go to [Netlify](https://app.netlify.com/) and sign in (create an account if you don't have one)
+2. Click "New site from Git"
+3. Select "GitHub" as your Git provider
+4. Authorize Netlify to access your GitHub account
+5. Select the repository `grandfranko4/usdtflasherpro`
+6. Configure the build settings:
+   - Build command: `npm run build`
+   - Publish directory: `build`
+7. Click "Show advanced" and add the following environment variables:
+   - `EMAIL_ADDRESS`: mikebtcretriever@gmail.com
+   - `EMAIL_PASSWORD`: mysi okbf jzwy ohya
+8. Click "Deploy site"
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+### Step 3: Configure Netlify Functions
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+1. After deployment, go to "Site settings" > "Functions" in your Netlify dashboard
+2. Verify that the functions directory is set to `functions`
+3. Go to "Build & deploy" > "Environment variables" and make sure your email credentials are set:
+   - `EMAIL_ADDRESS`: mikebtcretriever@gmail.com
+   - `EMAIL_PASSWORD`: mysi okbf jzwy ohya
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+### Step 4: Update Functions to Use Environment Variables
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+For better security, the functions should use environment variables instead of hardcoded credentials. The functions have been updated to use these environment variables.
 
-## Learn More
+### Step 5: Verify Deployment
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+1. Once deployed, Netlify will provide you with a URL (e.g., https://your-site-name.netlify.app)
+2. Visit the site and test the contact form and payment process to ensure email notifications are working
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## Troubleshooting Email Notifications
+
+If email notifications aren't working:
+
+1. Check Netlify Function logs in the Netlify dashboard under "Functions"
+2. Verify that environment variables are correctly set
+3. Make sure the Gmail account has "Less secure app access" enabled or is using an App Password
+4. Test the functions locally using Netlify CLI:
+   ```bash
+   npm install -g netlify-cli
+   netlify dev
+   ```
+
+## License
+
+All rights reserved. This code is proprietary and confidential.

@@ -1,0 +1,9 @@
+{
+  "name": "usdt-flasher-pro-functions",
+  "version": "1.0.0",
+  "description": "Netlify functions for USDT FLASHER PRO",
+  "main": "index.js",
+  "dependencies": {
+    "nodemailer": "^6.9.9"
+  }
+}
