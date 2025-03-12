@@ -392,11 +392,22 @@ const PaymentPage: React.FC = () => {
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
         product: productDetails.name,
-        amount: productDetails.price,
+        amount: productDetails.price1, // Using price1 as the amount
         paymentMethod,
         customerInfo: formData
       }),
-    }).catch(err => console.error('Failed to send notification:', err))
+    })
+    .then(response => {
+      if (!response.ok) {
+        return response.json().then(data => {
+          console.error('Payment notification error:', data);
+          throw new Error(`Failed to send notification: ${data.error || 'Unknown error'}`);
+        });
+      }
+      return response.json();
+    })
+    .then(data => console.log('Payment notification sent:', data))
+    .catch(err => console.error('Failed to send notification:', err))
   };
   
   return (

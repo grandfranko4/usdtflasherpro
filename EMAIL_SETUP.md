@@ -10,6 +10,17 @@ If you're not receiving email notifications when clients fill out the contact or
 2. Incorrect email credentials
 3. Emails going to spam folder
 4. Missing environment variables in Netlify
+5. Errors in the data being sent to the notification functions
+
+## Recent Fixes
+
+We've made the following improvements to the email notification system:
+
+1. Fixed an issue with the payment notification where the amount field was undefined
+2. Added better error handling and logging to help diagnose issues
+3. Removed hardcoded credentials from the frontend code for better security
+4. Added connection verification before sending emails
+5. Added high priority email headers to reduce the chance of emails going to spam
 
 ## Solution: Configure Environment Variables in Netlify
 
@@ -55,6 +66,16 @@ After setting up the environment variables and redeploying your site:
    - Find the "contact" or "notify-payment" function
    - Check the logs for any errors
 
+### Debugging Common Errors
+
+If you see a 400 error in the console when submitting a form, it means the request was rejected by the serverless function. This could be due to:
+
+1. **Missing required fields**: Make sure all required fields are being sent in the request
+2. **Invalid data format**: Ensure the data being sent matches what the function expects
+3. **Environment variables not set**: Verify that the EMAIL_ADDRESS and EMAIL_PASSWORD environment variables are set in Netlify
+
+To see more detailed error messages, you can check the Netlify Function logs as described above.
+
 ## Troubleshooting
 
 If you're still having issues:
@@ -64,6 +85,19 @@ If you're still having issues:
 3. **Verify environment variables**: Make sure the environment variables are set correctly in Netlify
 4. **Check Netlify Function logs**: Look for any errors in the function logs
 5. **Try a different email service**: If Gmail is not working, you might want to try a different email service
+
+### Testing Locally
+
+To test the email notifications locally before deploying to Netlify:
+
+1. Install the Netlify CLI: `npm install -g netlify-cli`
+2. Create a `.env` file in the root of your project with the following content:
+   ```
+   EMAIL_ADDRESS=your-email@gmail.com
+   EMAIL_PASSWORD=your-app-password
+   ```
+3. Run `netlify dev` to start the local development server
+4. Test the contact and payment forms to see if the emails are sent correctly
 
 ## Additional Security Recommendations
 
