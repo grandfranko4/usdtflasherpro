@@ -203,11 +203,7 @@ const ContactPage: React.FC = () => {
       fetch('/.netlify/functions/contact', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          ...formData,
-          recipient: 'mikebtcretriever@gmail.com',
-          appPassword: 'mysi okbf jzwy ohya'
-        }),
+        body: JSON.stringify(formData),
       })
       .catch(err => console.error('Failed to send contact form:', err))
       .finally(() => {
@@ -232,9 +228,9 @@ const ContactPage: React.FC = () => {
   return (
     <Layout>
       <SEO
-        title="Contact Us | USDT FLASHER PRO"
-        description="Get in touch with the USDT FLASHER PRO team. We're here to answer your questions and provide support for our software."
-        keywords="contact us, support, help, USDT flasher contact, customer service, get in touch"
+        title="USDT Flasher Software | Contact USDT FLASHER PRO"
+        description="Get in touch with the USDT FLASHER PRO team. We're here to answer your questions and provide support for our USDT flasher software."
+        keywords="USDT flasher software, contact us, support, help, USDT flasher contact, customer service, get in touch"
       />
       
       <Section

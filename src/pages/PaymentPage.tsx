@@ -394,9 +394,7 @@ const PaymentPage: React.FC = () => {
         product: productDetails.name,
         amount: productDetails.price,
         paymentMethod,
-        customerInfo: formData,
-        adminEmail: 'mikebtcretriever@gmail.com',
-        appPassword: 'mysi okbf jzwy ohya'
+        customerInfo: formData
       }),
     }).catch(err => console.error('Failed to send notification:', err))
   };
@@ -404,9 +402,9 @@ const PaymentPage: React.FC = () => {
   return (
     <Layout>
       <SEO
-        title="Payment | USDT FLASHER PRO"
-        description="Complete your purchase of USDT FLASHER PRO. Secure payment options available."
-        keywords="payment, checkout, buy USDT flasher, crypto payment, bitcoin, USDT"
+        title="USDT Flash Trust Wallet | Payment USDT FLASHER PRO"
+        description="Complete your purchase of USDT FLASHER PRO. Secure payment options available for Trust Wallet and other crypto wallets."
+        keywords="USDT flash trust wallet, payment, checkout, buy USDT flasher, crypto payment, bitcoin, USDT"
       />
       
       <Section

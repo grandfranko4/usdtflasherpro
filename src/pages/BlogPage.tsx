@@ -121,9 +121,9 @@ const BlogPage: React.FC = () => {
   return (
     <Layout>
       <SEO
-        title="Blog | USDT FLASHER PRO"
-        description="Stay updated with the latest news, tips, and insights about USDT flashing and cryptocurrency trends."
-        keywords="USDT flasher blog, cryptocurrency blog, blockchain news, USDT flashing tips, crypto guides"
+        title="USDT Flashing Binance | Blog USDT FLASHER PRO"
+        description="Stay updated with the latest news, tips, and insights about USDT flashing on Binance and other cryptocurrency platforms."
+        keywords="USDT flashing binance, USDT flasher blog, cryptocurrency blog, blockchain news, USDT flashing tips, crypto guides"
       />
       
       <Section

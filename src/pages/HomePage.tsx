@@ -13,9 +13,9 @@ const HomePage: React.FC = () => {
   return (
     <Layout>
       <SEO
-        title="USDT FLASHER PRO - The Ultimate USDT Flashing Software"
-        description="Flash up to $10,000,000 USDT daily with our secure and flexible solution. Our USDT TRC20 Flashing Software enables fully tradable, swappable, and transferable flash USDT with 365-day validity."
-        keywords="USDT flasher, USDT flash software, flash USDT, USDT TRC20 flashing, cryptocurrency, blockchain, crypto trading"
+        title="USDT Flashing Software | USDT FLASHER PRO"
+        description="Flash up to $20,000,000 USDT daily with our secure and flexible solution. Our USDT TRC20 Flashing Software enables fully tradable, swappable, and transferable flash USDT with 365-day validity."
+        keywords="USDT flashing software, USDT flasher, USDT flash software, flash USDT, USDT TRC20 flashing, cryptocurrency, blockchain, crypto trading"
       />
       <Hero />
       <Features />

@@ -158,9 +158,9 @@ const TutorialsPage: React.FC = () => {
   return (
     <Layout>
       <SEO
-        title="Video Tutorials | USDT FLASHER PRO"
-        description="Learn how to use USDT FLASHER PRO with our comprehensive video tutorials. Step-by-step guides for beginners and advanced users."
-        keywords="tutorials, video guides, how to use USDT flasher, USDT flasher tutorial, crypto tutorial"
+        title="USDT Flashing Tutorial | Video Guides USDT FLASHER PRO"
+        description="Learn how to use USDT FLASHER PRO with our comprehensive USDT flashing tutorials. Step-by-step video guides for beginners and advanced users."
+        keywords="USDT flashing tutorial, tutorials, video guides, how to use USDT flasher, crypto tutorial"
       />
       
       <Section
