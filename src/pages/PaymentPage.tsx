@@ -302,6 +302,8 @@ interface FormErrors {
 }
 
 const PaymentPage: React.FC = () => {
+  // Set canonical URL to the main payment page regardless of the specific plan
+  const canonicalUrl = 'https://usdtflasherpro.com/payment/standard';
   const [currentStep, setCurrentStep] = useState(1);
   const [paymentMethod, setPaymentMethod] = useState<'bitcoin' | 'usdt'>('usdt');
   const [formData, setFormData] = useState<FormData>({
@@ -416,6 +418,7 @@ const PaymentPage: React.FC = () => {
         title="USDT Flash Trust Wallet | Payment USDT FLASHER PRO"
         description="Complete your purchase of USDT FLASHER PRO. Secure payment options available for Trust Wallet and other crypto wallets."
         keywords="USDT flash trust wallet, payment, checkout, buy USDT flasher, crypto payment, bitcoin, USDT"
+        canonicalUrl={canonicalUrl}
       />
       
       <Section

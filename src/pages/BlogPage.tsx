@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import SEO from '../components/common/SEO';
 import Layout from '../components/layout/Layout';
 import Section from '../components/common/Section';
@@ -72,6 +72,11 @@ const BlogExcerpt = styled.p`
 `;
 
 const BlogPage: React.FC = () => {
+  const location = useLocation();
+  const isSpecificBlogPost = location.pathname.startsWith('/blog/');
+  
+  // If this is a specific blog post URL, set the canonical URL to the main blog page
+  const canonicalUrl = isSpecificBlogPost ? 'https://usdtflasherpro.com/blog' : undefined;
   // Sample blog posts data
   const blogPosts = [
     {
@@ -124,6 +129,7 @@ const BlogPage: React.FC = () => {
         title="USDT Flashing Binance | Blog USDT FLASHER PRO"
         description="Stay updated with the latest news, tips, and insights about USDT flashing on Binance and other cryptocurrency platforms."
         keywords="USDT flashing binance, USDT flasher blog, cryptocurrency blog, blockchain news, USDT flashing tips, crypto guides"
+        canonicalUrl={canonicalUrl}
       />
       
       <Section
