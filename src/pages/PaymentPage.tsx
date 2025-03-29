@@ -555,13 +555,13 @@ const PaymentPage: React.FC = () => {
                   <ol>
                     <li>Send the exact amount shown above to the address provided.</li>
                     <li>Make sure to use the {paymentMethod === 'bitcoin' ? 'Bitcoin' : 'TRON (TRC20)'} network for your transaction.</li>
-                    <li>After sending the payment, click the "I've Completed Payment" button below.</li>
-                    <li>We'll verify your payment and send your license key to the email address you provided.</li>
+                    <li>IMPORTANT: Only click the "Verify Payment" button after you have completed sending the payment. If you click before sending, your license will not be processed.</li>
+                    <li>After verification, we'll send your license key to the email address you provided.</li>
                   </ol>
                 </div>
                 
                 <Button variant="primary" onClick={handlePaymentComplete}>
-                  I've Completed Payment
+                  Verify Payment
                 </Button>
               </CryptoPayment>
             </FormSection>
@@ -574,9 +574,9 @@ const PaymentPage: React.FC = () => {
                 <path d="M10.97 4.97a.235.235 0 0 0-.02.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-1.071-1.05z"/>
               </svg>
               
-              <h3>Thank You for Your Purchase!</h3>
+              <h3>Payment Verification in Progress</h3>
               <p>
-                We've received your payment information and will verify it shortly. Once confirmed, we'll send your USDT FLASHER PRO license key to {formData.email}. This process typically takes 1-24 hours.
+                We are now verifying your payment. This process typically takes 1-24 hours. Feel free to contact us on WhatsApp if you have any questions.
               </p>
               
               <Button variant="primary" onClick={() => navigate('/')}>
